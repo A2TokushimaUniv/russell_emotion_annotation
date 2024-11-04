@@ -4,7 +4,7 @@ let isPlaying = false
 let fr = 10;
 let firstFileName
 let fileName
-let userName 
+let userName
 let end_f = false
 let r
 let g
@@ -15,11 +15,11 @@ const canvasHeight = 800
 const tagSqHeight = 800
 const tagSqWidth = 800
 const kanzyouWidth = 80
-const kanzyouHeight = 40 
+const kanzyouHeight = 40
 
 function preload() {
     img = loadImage("./img/new_sq.png")
-   
+
     img_kouhuku = loadImage("./img/kouhuku.png")
     img_akarui = loadImage("./img/akarui.png")
     img_kouhun = loadImage("./img/kouhun.png")
@@ -39,7 +39,7 @@ function preload() {
     img_rirakkusu = loadImage("./img/rirakkusu.png")
     img_kiraku = loadImage("./img/kiraku.png")
     img_manzoku = loadImage("./img/manzoku.png")
-    
+
 }
 
 function setup() {
@@ -67,7 +67,7 @@ function draw() {
     //image(img, 0, 0,tagSqWidth, tagSqHeight);
     if(x == 0){
         if(y > 0)tan = 10000;
-        else tan = -10000; 
+        else tan = -10000;
     }else{
         tan = y/x
     }
@@ -99,7 +99,7 @@ function draw() {
             else image(img_tukare, 0, 0,tagSqWidth, tagSqHeight);
        }
     }
-    
+
     const mouseFill = document.getElementById("canvas");  //colorful pointer
     const ctx = mouseFill.getContext("2d");
     // r = 255 - Math.floor((mouseY - 130) / 2.173) + Math.floor((mouseX - 130) / (2.173 * 2))
@@ -123,7 +123,7 @@ function draw() {
     }
     ctx.beginPath();
     ctx.arc(mouseX, mouseY, 10, 0, 2 * Math.PI);
-    ctx.fill();   
+    ctx.fill();
 
     if (end_f) {
         video.pause()
@@ -141,16 +141,6 @@ function mouseClicked() {
 }
 
 window.onload = () => {
-    // const button = document.getElementById("dl-button")
-    // button.addEventListener('click', () => {
-    //     const keys = Object.keys(mouseData)
-    //     outputData = []
-    //     keys.map(key => {
-    //         outputData.push(mouseData[key])
-    //     })
-    //     downloadCsv(outputData)
-    // })
-
     video = document.getElementById("test-video");
     console.log(video)
     let path = video.src
@@ -159,8 +149,6 @@ window.onload = () => {
     video.addEventListener('play', () => {
         isPlaying = true
         console.log('play')
-        // console.log("ファイル名" + firstFileName)
-        // console.log("realファイル名" + fileName)
         if (fileName == null){
             fileName = firstFileName
         }
@@ -198,8 +186,6 @@ function previewFile(hoge) {
     }
     const fileData = new FileReader();
     fileData.onload = (function () {
-        //id属性が付与されているimgタグのsrc属性に、fileReaderで取得した値の結果を入力することで
-        //プレビュー表示している
         video.src = fileData.result;
     });
     fileData.readAsDataURL(hoge.files[0]);
